@@ -1,0 +1,10 @@
+<div class="container">
+  <ng-container class="gallery-container" *ngIf="imageList.length === listSize">
+    <div
+     class="gallery-item" *ngFor="let i of imageList"
+     [ngClass]="[i.width >= 1080 ? 'w-2' : 'w-1', i.height >= 720 ? 'h-2' : 'h-1']">
+        <img [src]="i.src" [alt]="i.alt">
+    </div>
+  </ng-container>
+</div>
+
