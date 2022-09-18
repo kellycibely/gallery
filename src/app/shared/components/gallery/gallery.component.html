@@ -1,11 +1,12 @@
 <div [class]="'container '+'col-md-'+mqAlias">
-  <ng-container class="gallery-container" *ngIf="imageList.length === listSize">
+  <ng-container class="gallery-container">
     <div
      class="gallery-item" *ngFor="let i of imageList"
-     [ngClass]="[i.width >= 1080 && mqAlias !== 'xs' ? 'w-2' : 'w-1',
-                 i.height >= 720 ? 'h-2' : 'h-1']">
+     [ngClass]="[i.width >= fullHDWidth && mqAlias !== 'xs' ? 'w-2' : 'w-1',
+                 i.height >= fullHDHeight ? 'h-2' : 'h-1']">
         <img [src]="i.src" [alt]="i.alt">
     </div>
   </ng-container>
 </div>
+<span #scroll >Carregando...</span>
 
