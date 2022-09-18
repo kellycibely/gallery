@@ -20,6 +20,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
   public fullHDWidth: number = 1080;
   public fullHDHeight: number = 720;
   public mqAlias: string = ''
+  public toScroll: boolean = true;
 
   private watcher!: Subscription;
   private media$!: Observable<MediaChange[]>;
@@ -49,11 +50,14 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
     }
     this.observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
-        console.log('scroll');
-        this.ImageService.getImagemList(5).forEach(image => {
-          this.imageList.push(image);
-        })
-        console.log(this.imageList);
+        this.toScroll = true;
+        setTimeout(() => {
+          this.ImageService.getImagemList(15).forEach(image => {
+            this.imageList.push(image);
+          })
+        }, 2000)
+      } else {
+        this.toScroll = false;
       }
     }, options);
 
