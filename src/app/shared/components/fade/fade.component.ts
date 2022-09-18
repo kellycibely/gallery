@@ -51,7 +51,7 @@ export class FadeComponent implements OnInit {
   }
 
   private _show!: boolean;
-  state!: FadeState;
+  public state!: FadeState;
   constructor() { }
 
   ngOnInit(): void {

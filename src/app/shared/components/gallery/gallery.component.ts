@@ -52,7 +52,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
       if (entry.isIntersecting) {
         this.toScroll = true;
         setTimeout(() => {
-          this.ImageService.getImagemList(15).forEach(image => {
+          this.ImageService.getImagemList(20).forEach(image => {
             this.imageList.push(image);
           })
         }, 2000)
