@@ -4,7 +4,6 @@ import { ImageService } from '../../services/image.service';
 
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription, Observable } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gallery',
@@ -14,21 +13,24 @@ import { distinctUntilChanged } from 'rxjs/operators';
 export class GalleryComponent implements OnInit, OnDestroy   {
 
   public imageList: Image[] = []
-  public listSize: number = 20;
+  public listSize: number = 50;
 
   watcher!: Subscription;
   media$!: Observable<MediaChange[]>;
   activeMediaQuery!: MediaChange;
+  mqAlias: string = ''
 
   constructor(private ImageService: ImageService, private media: MediaObserver) {
     this.media$ = media.asObservable();
+    this.watcher = this.media$.subscribe(change => {
+      this.activeMediaQuery = change[0];
+      this.mqAlias = this.activeMediaQuery.mqAlias;
+      console.log(change[0].mqAlias)
+    });
   }
 
   ngOnInit(): void {
-    this.watcher = this.media$.subscribe(change => {
-      this.activeMediaQuery = change[0];
-      console.log(change[0])
-    });
+    
     this.imageList = this.ImageService.getImagemList(this.listSize);
   }
 

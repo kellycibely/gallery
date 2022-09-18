@@ -1,6 +1,5 @@
 .container {
   display: grid;
-  grid-template-columns: repeat(6,1fr);
   grid-template-rows: repeat(auto, 1fr);
   grid-gap: .2rem;
   grid-auto-rows: 200px;
@@ -45,4 +44,23 @@
 
 .w-2 {
   grid-column: span 2;
+}
+
+
+/* "screen and (min-width: 0px) and (max-width: 599.98px)" */
+.col-md-xs {
+  grid-template-columns: 1,1fr;
+}
+/* "screen and (min-width: 600px) and (max-width: 959.98px)" */
+.col-md-sm {
+  grid-template-columns: repeat(2,1fr);
+}
+ 
+/* "screen and (min-width: 960px) and (max-width: 1279.98px)" */
+.col-md-md {
+  grid-template-columns: repeat(6,1fr);
+}
+/* "screen and (min-width: 1280px) and (max-width: 1919.98px)" */
+.col-md-lg {
+  grid-template-columns: repeat(8,1fr);
 }
