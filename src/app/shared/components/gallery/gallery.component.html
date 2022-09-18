@@ -8,6 +8,9 @@
     </div>
   </ng-container>
 </div>
-<app-gradient></app-gradient>
+<app-fade [show]="toScroll">
+  <app-gradient></app-gradient>
+</app-fade>
+
 <span #scroll style="visibility: hidden;">Carregando...</span>
 
