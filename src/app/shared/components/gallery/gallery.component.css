@@ -65,3 +65,8 @@
   grid-template-columns: repeat(8,1fr);
 }
 
+/* "screen and (min-width: 1920px) and (max-width: 4999.98px)" */
+.col-md-xl {
+  grid-template-columns: repeat(10,1fr);
+}
+

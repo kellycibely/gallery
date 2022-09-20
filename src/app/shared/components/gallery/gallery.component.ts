@@ -31,6 +31,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
     this.watcher = this.media$.subscribe(change => {
       this.activeMediaQuery = change[0];
       this.mqAlias = this.activeMediaQuery.mqAlias;
+      console.log(this.activeMediaQuery);
     });
   }
 
