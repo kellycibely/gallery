@@ -1,16 +1,20 @@
-<div [class]="'container '+'col-md-'+mqAlias">
-  <ng-container class="gallery-container">
-    <div
-     class="gallery-item" *ngFor="let i of imageList"
-     [ngClass]="[i.width >= fullHDWidth && mqAlias !== 'xs' ? 'w-2' : 'w-1',
-                 i.height >= fullHDHeight ? 'h-2' : 'h-1']">
-        <img [src]="i.src" [alt]="i.alt">
-    </div>
-  </ng-container>
+<div *ngIf="imageList.length > 0">
+  <div [class]="'container '+'col-md-'+mqAlias">
+    <ng-container class="gallery-container">
+      <div
+       class="gallery-item" *ngFor="let i of imageList"
+       [ngClass]="[i.width >= fullHDWidth && mqAlias !== 'xs' ? 'w-2' : 'w-1',
+                   i.height >= fullHDHeight ? 'h-2' : 'h-1']">
+          <app-image [imageObject]="i"></app-image>
+          <img [src]="i.src" [alt]="i.alt">
+      </div>
+    </ng-container>
+  </div>
+  <app-fade [show]="toScroll">
+    <app-gradient></app-gradient>
+  </app-fade>
+  
+  <span #scroll style="visibility: hidden;">Carregando...</span>
 </div>
-<app-fade [show]="toScroll">
-  <app-gradient></app-gradient>
-</app-fade>
 
-<span #scroll style="visibility: hidden;">Carregando...</span>
 
