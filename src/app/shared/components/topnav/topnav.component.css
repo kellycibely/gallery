@@ -5,6 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin-bottom: 5px;
   
   padding: 16px 16px 16px 32px;
 
