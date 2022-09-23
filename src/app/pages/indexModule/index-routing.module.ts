@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {GalleryComponent} from "./gallery/gallery.component";
+import {IndexComponent} from "./index/index.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: GalleryComponent
+    component: IndexComponent,
+    children: [
+      {
+        path: '',
+        component: GalleryComponent
+      }
+    ]
   },
 ]
 
@@ -20,4 +27,4 @@ const routes: Routes = [
     RouterModule,
   ]
 })
-export class PagesRoutingModule { }
+export class IndexRoutingModule { }

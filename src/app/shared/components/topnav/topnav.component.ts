@@ -28,6 +28,6 @@ export class TopnavComponent implements OnInit {
   }
 
   redirect() {
-    this.router.navigateByUrl(this.routerLogo);
+    this.router.navigateByUrl(this.routerLogo).then(() => {});
   }
 }

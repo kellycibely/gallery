@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit, DoCheck, IterableDiffers, IterableDiffer } from '@angular/core';
-import { Image } from '../../shared/models/image';
-import { ImageService } from '../../core/services/image.service';
+import { Image } from '../../../shared/models/image';
+import { ImageService } from '../../../core/services/image.service';
 
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription, Observable } from 'rxjs';
