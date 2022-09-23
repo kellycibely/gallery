@@ -22,11 +22,15 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgba(0, 0, 0, .56);
+
+  cursor: pointer;
 }
 
 .contact {
   display: flex;
   gap: 24px;
+
+  cursor: pointer;
 }
 
 fa-icon {
