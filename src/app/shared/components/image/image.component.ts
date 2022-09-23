@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Image } from '../../models/image';
 
 @Component({
@@ -9,6 +9,7 @@ import { Image } from '../../models/image';
 export class ImageComponent implements OnInit {
 
   @Input() imageObject!: Image;
+  loading: boolean = true;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +17,10 @@ export class ImageComponent implements OnInit {
 
   getUrl() {
     return this.imageObject.alt === 0 ||(this.imageObject.alt && this.imageObject.alt <= 30) ? this.imageObject.src : ''
+  }
+
+  getLoad() {
+    this.loading = false;
   }
 
 }
