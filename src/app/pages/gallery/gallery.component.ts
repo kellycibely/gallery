@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit, DoCheck, IterableDiffers, IterableDiffer } from '@angular/core';
-import { Image } from '../../models/image';
-import { ImageService } from '../../services/image.service';
+import { Image } from '../../shared/models/image';
+import { ImageService } from '../../core/services/image.service';
 
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription, Observable } from 'rxjs';
@@ -77,7 +77,7 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
   IntersectionImages() {
     if ("IntersectionObserver" in window) {
       setTimeout(() => {
-        const lazyloadImages = document.querySelectorAll("div.lazy"); 
+        const lazyloadImages = document.querySelectorAll("div.lazy");
         const imageObserver = new IntersectionObserver(function(entries, observer) {
           entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -90,12 +90,12 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
             }
           });
         });
-  
+
         lazyloadImages.forEach((image) => {
           imageObserver.observe(image);
         });
       }, 1000);
-       
+
     }
   }
 

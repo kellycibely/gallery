@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Image } from '../models/image';
+import { Image } from '../../shared/models/image';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class ImageService {
   }
 
   public getImagemList(sizeList: number): Image[] {
-    const images: Image[] = [];  
+    const images: Image[] = [];
     for (let i = 0; i < sizeList; i++) {
         const image = this.getImage();
         image.alt = i;
