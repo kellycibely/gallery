@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ViewChildren, ElementRef, QueryList, AfterViewInit, DoCheck, IterableDiffers, IterableDiffer } from '@angular/core';
 import { Image } from '../../models/image';
 import { ImageService } from '../../services/image.service';
 
@@ -10,7 +10,7 @@ import { Subscription, Observable } from 'rxjs';
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
-export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
+export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestroy   {
 
   @ViewChild('scroll', {static: false}) scroll!: ElementRef;
   private observer!: IntersectionObserver;
@@ -25,13 +25,15 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
   private watcher!: Subscription;
   private media$!: Observable<MediaChange[]>;
   private activeMediaQuery!: MediaChange;
+  differ: any;
 
-  constructor(private ImageService: ImageService, private media: MediaObserver) {
+  constructor(private iterableDiffers: IterableDiffers, private ImageService: ImageService, private media: MediaObserver) {
     this.media$ = media.asObservable();
     this.watcher = this.media$.subscribe(change => {
       this.activeMediaQuery = change[0];
       this.mqAlias = this.activeMediaQuery.mqAlias;
     });
+    this.differ = iterableDiffers.find([]).create(undefined);
   }
 
   ngOnInit(): void {
@@ -40,6 +42,17 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
 
   ngAfterViewInit(): void {
     this.generateObserver();
+    this.IntersectionImages();
+  }
+
+  ngDoCheck() {
+    const change = this.differ.diff(this.imageList);
+    if (change) {
+      this.IntersectionImages();
+    }
+    // here you can do what you want on array change
+    // you can check for forEachAddedItem or forEachRemovedItem on change object to see the added/removed items
+    // Attention: ngDoCheck() is triggered at each binded variable on componenet; if you have more than one in your component, make sure you filter here the one you want.
   }
 
   generateObserver() {
@@ -62,6 +75,36 @@ export class GalleryComponent implements OnInit, AfterViewInit, OnDestroy   {
     }, options);
 
     this.observer.observe(this.scroll.nativeElement);
+  }
+
+  IntersectionImages() {
+    if ("IntersectionObserver" in window) {
+      setTimeout(() => {
+        const lazyloadImages = document.querySelectorAll("div.lazy"); 
+        const imageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const imageContainer = entry.target;
+              const appImage = imageContainer.querySelector('app-image')!.querySelector('img');
+              appImage!.src = appImage!.dataset['src'] as string;
+              imageContainer!.classList.remove("lazy");
+              appImage!.classList.remove("lazy");
+              imageObserver.unobserve(imageContainer);
+            }
+          });
+        });
+  
+        lazyloadImages.forEach((image) => {
+          imageObserver.observe(image);
+        });
+      }, 1000);
+      
+      
+
+      
+    } else {
+      console.log('not IntersectionObserver');
+    }
   }
 
   ngOnDestroy(): void {

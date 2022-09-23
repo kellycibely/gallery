@@ -14,4 +14,8 @@ export class ImageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getUrl() {
+    return this.imageObject.alt === 0 ||(this.imageObject.alt && this.imageObject.alt <= 30) ? this.imageObject.src : ''
+  }
+
 }
