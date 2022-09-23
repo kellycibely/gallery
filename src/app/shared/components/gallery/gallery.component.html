@@ -2,7 +2,8 @@
   <div [class]="'container '+'col-md-'+mqAlias">
     <ng-container class="gallery-container">
       <div [class.lazy]="i >= 0"
-       class="gallery-item" *ngFor="let image of imageList; let i=index"
+       class="gallery-item" 
+       *ngFor="let image of imageList; let i=index"
        [ngClass]="[image.width >= fullHDWidth && mqAlias !== 'xs' ? 'w-2' : 'w-1',
        image.height >= fullHDHeight ? 'h-2' : 'h-1']">
           <app-image [imageObject]="image"></app-image>

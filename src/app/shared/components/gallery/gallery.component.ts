@@ -50,9 +50,6 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
     if (change) {
       this.IntersectionImages();
     }
-    // here you can do what you want on array change
-    // you can check for forEachAddedItem or forEachRemovedItem on change object to see the added/removed items
-    // Attention: ngDoCheck() is triggered at each binded variable on componenet; if you have more than one in your component, make sure you filter here the one you want.
   }
 
   generateObserver() {
@@ -98,14 +95,13 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
           imageObserver.observe(image);
         });
       }, 1000);
-      
-      
-
-      
-    } else {
-      console.log('not IntersectionObserver');
+       
     }
   }
+
+   getBase64StringFromDataURL(dataURL: any){
+    dataURL.replace('data:', '').replace(/^.+,/, '');
+   }
 
   ngOnDestroy(): void {
     this.watcher.unsubscribe();
