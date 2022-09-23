@@ -3,7 +3,8 @@
   grid-template-rows: auto;
   grid-gap: .5rem;
   grid-auto-rows: 200px;
-  grid-auto-flow: dense
+  grid-auto-flow: dense;
+  padding: .5rem;
 }
 
 .gallery-container {
