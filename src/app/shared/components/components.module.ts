@@ -7,9 +7,10 @@ import {TopnavComponent} from './topnav/topnav.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ImageComponent} from './image/image.component';
 import {BtnComponent} from "./btn/btn.component";
+import { GoTopComponent } from './go-top/go-top.component';
 
 @NgModule({
-  declarations: [GradientComponent, FadeComponent, TopnavComponent, ImageComponent,BtnComponent],
+  declarations: [GradientComponent, FadeComponent, TopnavComponent, ImageComponent,BtnComponent, GoTopComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -20,6 +21,7 @@ import {BtnComponent} from "./btn/btn.component";
     GradientComponent,
     ImageComponent,
     BtnComponent,
+    GoTopComponent,
   ]
 })
 export class ComponentsModule {
