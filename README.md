@@ -1,27 +1,47 @@
 # Gallery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+Projeto de galeria de fotos dinâmicas com Grid Css
 
-## Development server
+Utiliza [Angular CLI](https://github.com/angular/angular-cli) versão 14.0.0.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<img src="/src/assets/img/application.png" alt="gallery"/>
 
-## Code scaffolding
+## Principais tecnologias
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular**
+- **MediaObserver**
+- **IntersectionObserver**
+- **Grid**
+- **Angular-fontawesome**
 
-## Build
+Aplicação utiliza bibliotecas como **IntersectionObserver** para gerenciar o carregamento lazyload das imagens da galeria de fotos e **MediaObserver** utilizada para acompanhamento das alterações do Viewport em dipositivos distintos e aplicação das regras para responsividade correta das telas. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Estrutura do projeto
 
-## Running unit tests
+- **Core**: Diretório responsável por armazenar arquivos indisponsável para o sistema (ex: services...).
+- **Pages**: Diretório responsável por armazenar a camada com exibição ou sejas os componentes responsáveis pelas telas.
+- **Shared**: Diretório responsável por armazenar arquivos compartilhaveis ex(models e componentes...).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Projeto foi desenvolvido com uma arquitetura e organização de diretórios escalável e de fácil manutenção. Também utiliza de lazyload para gerenciamento das rotas dos modulos da aplicação.
 
-## Running end-to-end tests
+## SETUP
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Clone o projeto
 
-## Further help
+  $ git clone <url>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+- Instale NPM packages
+
+  $ npm install
+
+
+- execute o projeto 
+
+  $ ng serve
+## Executando o projeto
+
+após execute `ng serve` para rodar o servidor de desenvolvimento. Navegue para `http://localhost:4200/` para ver o grid de fotos.
+
+**DEMO**: https://gallery-31ui.vercel.app/
+
