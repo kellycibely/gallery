@@ -17,7 +17,6 @@ export class NotFoundComponent implements OnInit {
     this.windowService.mqAlias$.subscribe(mqAlias => {
       if (mqAlias) {
         this.mqAlias = mqAlias;
-        // console.log(mqAlias);
       }
     });
   }

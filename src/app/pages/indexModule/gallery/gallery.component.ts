@@ -4,6 +4,7 @@ import { ImageService } from '../../../core/services/image.service';
 
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription, Observable } from 'rxjs';
+import {WindowService} from "../../../core/services/window.service";
 
 @Component({
   selector: 'app-gallery',
@@ -27,11 +28,12 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
   private activeMediaQuery!: MediaChange;
   differ: any;
 
-  constructor(private iterableDiffers: IterableDiffers, private ImageService: ImageService, private media: MediaObserver) {
-    this.media$ = media.asObservable();
-    this.watcher = this.media$.subscribe(change => {
-      this.activeMediaQuery = change[0];
-      this.mqAlias = this.activeMediaQuery.mqAlias;
+  constructor(private iterableDiffers: IterableDiffers, private ImageService: ImageService, private media: MediaObserver,
+              private windowService: WindowService) {
+    this.windowService.mqAlias$.subscribe(mqAlias => {
+      if (mqAlias) {
+        this.mqAlias = mqAlias;
+      }
     });
     this.differ = iterableDiffers.find([]).create(undefined);
   }
@@ -98,10 +100,6 @@ export class GalleryComponent implements OnInit, AfterViewInit, DoCheck, OnDestr
 
     }
   }
-
-   getBase64StringFromDataURL(dataURL: any){
-    dataURL.replace('data:', '').replace(/^.+,/, '');
-   }
 
   ngOnDestroy(): void {
     this.watcher.unsubscribe();
