@@ -24,7 +24,7 @@ export class TopnavComponent implements OnInit {
   }
 
   goGithub() {
-    window.open('https://gist.github.com/kellycibely', '_blank');
+    window.open('https://github.com/kellycibely/gallery', '_blank');
   }
 
   redirect() {
