@@ -30,17 +30,16 @@ export class GoTopComponent implements OnInit {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       this.display = 'block';
       this.visible = true;
-      // document.getElementById("myBtn").style.display = "block";
     } else {
       this.display = 'none';
       this.visible = false;
-      // document.getElementById("myBtn").style.display = "none";
     }
   }
 
   topFunction() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
   }
 
 }
