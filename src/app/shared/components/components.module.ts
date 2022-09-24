@@ -6,9 +6,10 @@ import {FadeComponent} from './fade/fade.component';
 import {TopnavComponent} from './topnav/topnav.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {ImageComponent} from './image/image.component';
+import {BtnComponent} from "./btn/btn.component";
 
 @NgModule({
-  declarations: [GradientComponent, FadeComponent, TopnavComponent, ImageComponent],
+  declarations: [GradientComponent, FadeComponent, TopnavComponent, ImageComponent,BtnComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -18,6 +19,7 @@ import {ImageComponent} from './image/image.component';
     FadeComponent,
     GradientComponent,
     ImageComponent,
+    BtnComponent,
   ]
 })
 export class ComponentsModule {

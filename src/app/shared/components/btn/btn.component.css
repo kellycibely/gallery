@@ -1,0 +1,27 @@
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 300px;
+  width: 100%;
+
+  padding: 27px 82px;
+  border-radius: 48px;
+  border: none;
+
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.primary {
+  font-weight: 700;
+
+  color: #fff;
+  background-color: #e8947e;
+  opacity: .8;
+}
+

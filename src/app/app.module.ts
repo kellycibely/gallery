@@ -9,10 +9,12 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from "@angular/router";
 import {IndexModule} from "./pages/indexModule/index.module";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
